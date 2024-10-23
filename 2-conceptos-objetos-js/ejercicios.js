@@ -11,10 +11,10 @@
 -----------------------------------------------------------------------
 */
 const myPenguin = {
-	character : "Captain Cook",
+	character: "Captain Cook",
 	origin: "Mr. Popper's Penguins",
 	author: "Richard and Florence Atwater",
-	Notes: "Children's book about a housepainter who ends up with a flock of penguins."
+	notes: "Children's book about a housepainter who ends up with a flock of penguins."
 };
 
 /*
@@ -47,6 +47,8 @@ myPenguin.puedeVolar = false;
 myPenguin.graznar = function() {
 	console.log ("kaww kaww!!");
 }
+
+console.log(myPenguin.graznar());
 /*
 -----------------------------------------------------------------------
 5.- Añade otro método a tu pingüino llamado 'saludar' que imprima en
@@ -64,7 +66,8 @@ myPenguin.saludar = function() {
     se ha aplicado el cambio correctamente.
 -----------------------------------------------------------------------
 */
-
+myPenguin.character = "Señor Pingu";
+myPenguin.saludar();
 /*
 -----------------------------------------------------------------------
 7.- Escribe otro método llamado 'volar'. Con este método imprime en 
@@ -133,9 +136,9 @@ const libros = [
     }
 ];
 
-libros.forEach = function(libro) {
-    let estadoDeLectura = libro.leido ? "ya ha sido leido" : "no ha sido leido aún";
-    console.log(`${libro.titulo}, por ${libro.autor}, ${estadoDeLectura}.`);
+libros.forEach = function(item) {
+    let estadoDeLectura = item.leido ? "ya ha sido leido" : "no ha sido leido aún";
+    console.log(`${item.titulo}, por ${item.autor}, ${estadoDeLectura}.`);
 }
 
 /*
@@ -151,7 +154,12 @@ libros.forEach = function(libro) {
 	 Generar el RFC a partir de el nombre, edad y sexo
 -----------------------------------------------------------------------
 */
-class persona {
+
+
+
+
+
+class Persona {
     constructor (nombre, edad, sexo, peso, altura) {
         this.nombre = nombre;
         this.edad = edad;
@@ -159,6 +167,10 @@ class persona {
         this.peso = peso;
         this.altura = altura;
         this.RFC = this.generarRFC();
+    }
+
+    saludar() {
+        console.log(`hola soy ${this.nombre}, y mi edad es ${this.edad}`)
     }
 
     // Metoodo para calcular el IMC
@@ -181,6 +193,12 @@ class persona {
         return `${nombreIniciales}${sexoLetra}${edadDosDigitos}`;
     }
 }
+
+const yo = new Persona("miguel", 22, "masculino", 89, 1.80);
+yo.saludar();
+
+const el = new Persona("javier", 22, "masculino", 89, 1.80);
+el.saludar();
 /*
 -----------------------------------------------------------------------
 12.- Crear una clase Cuenta que tenga los siguientes atributos y metodos:
