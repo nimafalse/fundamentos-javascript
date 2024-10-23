@@ -10,7 +10,12 @@
     (por ejemplo: character, origin...)
 -----------------------------------------------------------------------
 */
-
+class myPenguin {
+	Character : "Captain Cook, Greta, other penguins",
+	Origin: "Mr. Popper's Penguins",
+	Author: "Richard and Florence Atwater",
+	Notes: "Children's book about a housepainter who ends up with a flock of penguins."
+};
 /*
 -----------------------------------------------------------------------
 2.- Imprime el nombre del pingüino en consola, como si fuera un mensaje
@@ -18,7 +23,7 @@
     "Hola, soy un pingüino y mi nombre es [NOMBRE AQUÍ]"
 -----------------------------------------------------------------------
 */
-
+console.log("Hola, soy un pingüino y mi nombre es [Character]")
 
 /*
 -----------------------------------------------------------------------
@@ -27,7 +32,7 @@
     Nota: No modifiques el código original donde definiste a tu pingüino
 -----------------------------------------------------------------------
 */
-
+myPenguin.puedeVolar = false
 
 /*
 -----------------------------------------------------------------------
@@ -38,7 +43,9 @@
     nueva línea de código.
 -----------------------------------------------------------------------
 */
-
+myPenguin.graznar function() {
+	console.log ("kaww kaww!!");
+}
 /*
 -----------------------------------------------------------------------
 5.- Añade otro método a tu pingüino llamado 'saludar' que imprima en
@@ -46,7 +53,13 @@
     Esta vez, emplea la palabra reservada "this" para resolverlo.
 -----------------------------------------------------------------------
 */
-
+myPenguin.saludar function() {
+	constructor (graznar, saludar) {
+		this.graznar = graznar;
+		this.saludar = (myPenguin);
+	}
+	return this.saludar * this.graznar
+}
 /*
 -----------------------------------------------------------------------
 6.- Sin modificar el código previo, cambia el nombre del pingüino a 
