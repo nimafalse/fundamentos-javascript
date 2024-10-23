@@ -10,12 +10,13 @@
     (por ejemplo: character, origin...)
 -----------------------------------------------------------------------
 */
-class myPenguin {
-	Character : "Captain Cook, Greta, other penguins",
-	Origin: "Mr. Popper's Penguins",
-	Author: "Richard and Florence Atwater",
+const myPenguin = {
+	character : "Captain Cook",
+	origin: "Mr. Popper's Penguins",
+	author: "Richard and Florence Atwater",
 	Notes: "Children's book about a housepainter who ends up with a flock of penguins."
 };
+
 /*
 -----------------------------------------------------------------------
 2.- Imprime el nombre del pingüino en consola, como si fuera un mensaje
@@ -23,7 +24,7 @@ class myPenguin {
     "Hola, soy un pingüino y mi nombre es [NOMBRE AQUÍ]"
 -----------------------------------------------------------------------
 */
-console.log("Hola, soy un pingüino y mi nombre es [Character]")
+console.log("Hola, soy un pingüino y mi nombre es " + myPenguin.character);
 
 /*
 -----------------------------------------------------------------------
@@ -32,7 +33,7 @@ console.log("Hola, soy un pingüino y mi nombre es [Character]")
     Nota: No modifiques el código original donde definiste a tu pingüino
 -----------------------------------------------------------------------
 */
-myPenguin.puedeVolar = false
+myPenguin.puedeVolar = false;
 
 /*
 -----------------------------------------------------------------------
@@ -43,7 +44,7 @@ myPenguin.puedeVolar = false
     nueva línea de código.
 -----------------------------------------------------------------------
 */
-myPenguin.graznar function() {
+myPenguin.graznar = function() {
 	console.log ("kaww kaww!!");
 }
 /*
@@ -53,13 +54,9 @@ myPenguin.graznar function() {
     Esta vez, emplea la palabra reservada "this" para resolverlo.
 -----------------------------------------------------------------------
 */
-myPenguin.saludar function() {
-	constructor (graznar, saludar) {
-		this.graznar = graznar;
-		this.saludar = (myPenguin);
-	}
-	return this.saludar * this.graznar
-}
+myPenguin.saludar = function() {
+    console.log("Hola, soy" + this.character);
+};
 /*
 -----------------------------------------------------------------------
 6.- Sin modificar el código previo, cambia el nombre del pingüino a 
@@ -76,7 +73,14 @@ myPenguin.saludar function() {
     "No puedo volar :("
 -----------------------------------------------------------------------
 */
-
+myPenguin.volar = function () {
+    if (puedeVolar = true) {
+        console.log("¡Puedo volar!")
+    }
+    else {
+        console.log("No puedo volar :(")
+    }
+}
 /*
 -----------------------------------------------------------------------
 8.- Cambia la propiedad "puedeVolar" de tu pingüino a "true". Manda a 
@@ -84,7 +88,8 @@ myPenguin.saludar function() {
     correctamente.
 -----------------------------------------------------------------------
 */
-
+myPenguin.puedeVolar = true;
+myPenguin.volar();
 /*
 -------------------------------------------------------------
 9.- Crea un objeto que contenga información de una receta 
@@ -101,7 +106,10 @@ myPenguin.saludar function() {
     cocoa
 -------------------------------------------------------------
 */
-
+const mole = {
+    porciones: 2,
+    ingredientes: ["Canela", "Comino", "Cocoa"]
+};
 /*
 -------------------------------------------------------------
 10.- Crea un arreglo de objetos, donde cada objeto describa 
@@ -112,6 +120,23 @@ myPenguin.saludar function() {
     status de lectura (si ya ha sido leído, o no).
 -------------------------------------------------------------
 */
+const libros = [
+    {
+        titulo : "La isla Misteriosa", 
+        autor : "Julio Verne", 
+        leido : false
+    },
+    {
+        titulo : "1984", 
+        autor : "George Orwell", 
+        leido : true
+    }
+];
+
+libros.forEach = function(libro) {
+    let estadoDeLectura = libro.leido ? "ya ha sido leido" : "no ha sido leido aún";
+    console.log(`${libro.titulo}, por ${libro.autor}, ${estadoDeLectura}.`);
+}
 
 /*
 
@@ -126,7 +151,36 @@ myPenguin.saludar function() {
 	 Generar el RFC a partir de el nombre, edad y sexo
 -----------------------------------------------------------------------
 */
+class persona {
+    constructor (nombre, edad, sexo, peso, altura) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.peso = peso;
+        this.altura = altura;
+        this.RFC = this.generarRFC();
+    }
 
+    // Metoodo para calcular el IMC
+    calcularIMC() {
+        return this.peso / (this.altura * this.altura);
+    }
+
+    // Metodo para verificar si es mayor de edad
+
+    esMayorDeEdad() {
+        return this.edad >= 18;
+    }
+
+    // Metodo para generar el RFC
+
+    generarRFC() {
+        const nombreIniciales = this.nombre.substring(0, 2).toUpperCase();
+        const sexoLetra = this.sexo.substring(0, 1).toUpperCase();
+        const edadDosDigitos = this.edad.toString().padStart(2, "0");
+        return `${nombreIniciales}${sexoLetra}${edadDosDigitos}`;
+    }
+}
 /*
 -----------------------------------------------------------------------
 12.- Crear una clase Cuenta que tenga los siguientes atributos y metodos:
@@ -138,3 +192,27 @@ myPenguin.saludar function() {
 -----------------------------------------------------------------------
 */
 
+class cuenta {
+    constructor (titular, cantidad) {
+        this.titular = titular;
+        this.cantidad = cantidad;
+    }
+    
+    ingresar(cantidad) {
+        if (this.cantidad + cantidad > 900) {
+            console.log("No se puede ingresar más de $900");
+        } else {
+            this.cantidad += cantidad;
+            console.log(`Se ha ingresado $${cantidad}. Nuevos Saldo: $${this.cantidad}.`);
+        }
+    }
+
+    retirar (cantidad) {
+        if (this.cantidad - cantidad < 10 ) {
+            console.log("No se puede retirar. El saldo no puede ser menor a $10");
+        } else {
+            this.cantidad -= cantidad;
+            console.log(`Se ha retirado $${cantidad}. Nuevo Saldo: $${this.cantidad}.`);
+        }
+    }
+}
